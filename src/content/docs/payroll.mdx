@@ -3,23 +3,23 @@ title: '2. Payroll'
 description: Hours in, checks, one approval, and the books tied back.
 ---
 
-:::caution[DAKSH-WRITES]
-The steps in order, in your words: BRIEF.md section 5, prompts 6-9.
-:::
-
 ## What is already solved
 
-:::caution[DAKSH-WRITES]
-Facts and links are checked, the wording is not yours. Say this in your own words, then delete this box.
-:::
+Wagepoint calculates the deductions and connects to QuickBooks Online, 7shifts and Deputy ([Wagepoint](https://wagepoint.com/integrations), read 2026-11-05). I would not rebuild that. Sources disagree on whether it has a public API, so I would ask Wagepoint before relying on one. My work is around Wagepoint: clean hours in, checks before approval, and tying the result to the books.
 
-Wagepoint calculates the deductions and connects to QuickBooks Online, 7shifts and Deputy ([Wagepoint](https://wagepoint.com/integrations), read 2026-11-05). I would not rebuild that. Sources disagree on whether it has a public API, so I would ask Wagepoint before relying on one.
+## The steps
 
-## Checks before the approval reaches you
+1. **Hours come in.** Use Time by Wagepoint, 7shifts or Deputy where they fit the client. Other clients get a simple form that goes to the system.
+2. **Check the hours,** before they reach Wagepoint.
+3. **Load Wagepoint.** Through an add-on or import. If neither works for a client, the admin enters the checked hours until there is a better way.
+4. **Check the calculated pay.** Compare the pay run to recent runs, and recalculate sample lines from CRA's formulas as a second opinion.
+5. **Send you one approval.** An email with totals, what changed since the last run, and every flag.
+6. **You approve and run it.** The system records exactly what you approved. If any number changes afterward, the approval is cancelled and you see it again.
+7. **Tie it back.** Stubs and reports come from Wagepoint. Its QuickBooks auto-sync, which I understand is off by default, posts the journal. The system then checks the journal against the pay run and the bank.
 
-:::caution[DAKSH-WRITES]
-Starter list from research. Cut, change or add rows: you have to defend each one in an interview. Then delete this box.
-:::
+## Checks
+
+A failed check here stops the step. My earlier work on Narada OS only warned, which is fine for stock advice and wrong for someone's pay.
 
 | Check | If it fails |
 |---|---|
@@ -30,14 +30,11 @@ Starter list from research. Cut, change or add rows: you have to defend each one
 | Anything changed after you approved | Approval cancelled, you see it again |
 | Posting journal in QuickBooks = pay run = bank withdrawal, allowing for Wagepoint's own fee, which does not export to QuickBooks (confirm in setup) | Flagged after the run |
 
-:::caution[DAKSH-WRITES]
-Facts and links are checked, the wording is not yours. Say this in your own words, then delete this box.
-:::
-
 Quebec is separate: CRA's payroll calculator excludes it ([CRA](https://www.canada.ca/en/revenue-agency/services/e-services/digital-services-businesses/payroll-deductions-online-calculator.html)). Any Quebec clients need their own check.
 
 ## What you still do by hand
 
-:::caution[DAKSH-WRITES]
-Prompt 10.
-:::
+- Approve and run every payroll
+- Decide unusual pay, such as bonuses, leave and final pay
+- Handle new hires and departures in Wagepoint
+- The admin enters hours for any client with no import route

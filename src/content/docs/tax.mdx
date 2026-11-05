@@ -3,15 +3,13 @@ title: '3. Tax prep'
 description: GST/HST, T2 and T1 prepared from the books, reviewed and filed by you.
 ---
 
-:::caution[DAKSH-WRITES]
-Which return you'd automate first and why, then the steps, in your words: BRIEF.md section 5, prompts 11-13.
-:::
+## The order: GST/HST, then T2, then T1
+
+GST/HST comes straight from the books, comes up often, and takes the least judgment, so it goes first. T2 builds on a closed year of books. T1 goes last because much of it depends on slips and client answers, not your books.
+
+I do not expect the system to fill every line in year one. Each return gets a list of what it filled, where each number came from, and what it left for you.
 
 ## The rules this has to fit
-
-:::caution[DAKSH-WRITES]
-Facts and links are checked, the wording is not yours. Say this in your own words, then delete this box.
-:::
 
 - **T2:** for tax years starting after 2023, corporations file electronically, with a few exceptions, using CRA-certified software. A tax professional filing for clients needs EFILE registration. ([CRA](https://www.canada.ca/en/revenue-agency/services/e-services/digital-services-businesses/corporation-internet-filing/about-corporation-internet-filing-service.html), [certified software](https://www.canada.ca/en/revenue-agency/services/e-services/digital-services-businesses/corporation-internet-filing/software.html))
 - **From the books to the T2:** QuickBooks Online Accountant's Workpapers can map accounts to GIFI codes and download a file that tax software such as TaxCycle imports. ([TaxCycle](https://www.taxcycle.com/resources/help-topics/data-import/import-gifi/export-gifi-from-quickbooks))
@@ -20,11 +18,30 @@ Facts and links are checked, the wording is not yours. Say this in your own word
 
 All read 2026-11-05.
 
-## Checks before you review
+## The steps
 
-:::caution[DAKSH-WRITES]
-Starter list from research. Cut, change or add rows: you have to defend each one in an interview. Then delete this box.
-:::
+**GST/HST**
+
+1. Once the period's books are closed, the system builds a working copy of the return, with the transactions behind each figure.
+2. The checks run, and you get the worksheet and any flags.
+3. You review and file.
+
+**T2**
+
+1. The year closes and the system flags any account with no GIFI code.
+2. The GIFI file goes into your certified software. If you don't use TaxCycle, I would find the route for yours.
+3. Python compares the result to last year, and Claude writes a review note on what moved. It explains; it does not decide.
+4. You complete the judgment items, get the T183CORP signed, and file.
+
+**T1**
+
+1. Each client gets a checklist based on last year's return.
+2. Slips and answers arrive by email or chat. The system chases what is missing.
+3. Self-employment figures come from the books.
+4. How the data enters your tax software depends on which one you use, so that is my first question to you.
+5. You review, get the T183 signed, and file.
+
+## Checks before you review
 
 | Check | If it fails |
 |---|---|
@@ -37,6 +54,7 @@ Starter list from research. Cut, change or add rows: you have to defend each one
 
 ## What you still do by hand
 
-:::caution[DAKSH-WRITES]
-Prompt 14.
-:::
+- Review every return, and make the judgment calls
+- Get each client's signed authorization
+- File through your certified software, under your EFILE registration
+- The system never files anything

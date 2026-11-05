@@ -3,3 +3,4 @@ dist
 .astro
 BRIEF.md
 check-publish.sh
+EMAIL.md

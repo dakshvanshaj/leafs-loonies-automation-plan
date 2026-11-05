@@ -3,23 +3,25 @@ title: '1. Bookkeeping'
 description: Bank transactions, receipts and the monthly close.
 ---
 
-:::caution[DAKSH-WRITES]
-The steps in order, in your words: BRIEF.md section 5, prompts 1-4.
-:::
-
 ## The constraint I would test first
-
-:::caution[DAKSH-WRITES]
-Facts and links are checked, the wording is not yours. Say this in your own words, then delete this box.
-:::
 
 Intuit support answers on its developer forum say no public API reads or accepts "For Review" bank feed transactions, and that a transaction created by API posts straight to the ledger without clearing the queue. That risks duplicates. I found no official document on this, so I would confirm it in a QuickBooks sandbox in week 1. ([Intuit developer forum](https://help.developer.intuit.com/s/question/0D5TR00001VhrZq0AJ/is-there-a-supported-api-scope-or-partner-program-to-read-or-accept-pending-bankfeed-for-review-transactions-in-qbo-if-not-are-bank-rules-with-autoadd-the-recommended-mechanism-for-automating-recurring-merchant-categorization-on-our-own-file), read 2026-11-05)
 
-## Checks
+My design rule: **each bank account gets one way into the books.** If the feed and the API both add the same transaction, you get duplicates.
 
-:::caution[DAKSH-WRITES]
-Starter list from research. Cut, change or add rows: you have to defend each one in an interview. Then delete this box.
-:::
+## The steps
+
+1. **Set up the client.** One document inbox and Drive folder per client, plus their chart of accounts and past categorized transactions.
+2. **Collect documents.** Receipts and invoices arrive by email or client chat. The original is saved before anything else happens, so a bad file never means asking the client again.
+3. **Bring in bank lines.** My first test: the bank's statement file is the only way in, with the feed off for that account. The admin downloads it monthly at first. A bank data service such as Plaid could replace that, but I have not tested or priced one.
+4. **Categorize.** The client's own rules go first. Claude handles the rest, using their chart and history, and returns a category and a reason. Anything it is not sure about becomes a question. I would set that line from the results of the parallel run, not by guessing.
+5. **Read receipts.** Claude reads each image into fixed fields: vendor, date, total, tax. Python does all the arithmetic and matches the receipt to a bank line. Text on a receipt is treated as data, never as an instruction.
+6. **Post to QuickBooks.** Only lines that pass the checks are posted, with the receipt attached. The rest wait for a person.
+7. **Close the month.** The system runs the checklist below and drafts a short note for the client. The month closes when you sign off.
+
+**If the test fails:** the feed stays on, QuickBooks bank rules handle repeat merchants, and the admin clears the rest of the queue using the system's suggestions. That needs more hands, but it is safe.
+
+## Checks
 
 | Check | If it fails |
 |---|---|
@@ -27,12 +29,14 @@ Starter list from research. Cut, change or add rows: you have to defend each one
 | Tax amount fits the tax code on the line and a valid rate for where the purchase was made (Ontario client buying in Alberta pays GST, not HST) | Goes to a person |
 | Same vendor, date and amount already in the books | Held as a possible duplicate |
 | Receipt matches a bank line | Listed as unmatched |
-| Category confidence below the line | Question goes to the client or admin |
+| Claude is not sure of the category | Question goes to the client or admin |
 | Book balance = statement ending balance | Month stays open |
 | Expense category swings far from recent months | Listed for sign-off |
 
 ## What you still do by hand
 
-:::caution[DAKSH-WRITES]
-Prompt 5.
-:::
+- Answer the questions the system could not settle, such as whether a purchase was personal or business
+- Sign off each month
+- Approve each new client's setup
+- The admin downloads statements, until a bank data service is tested
+- The QuickBooks reconciliation step, if the sandbox shows it can't be done by API
