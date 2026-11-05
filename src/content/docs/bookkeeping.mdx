@@ -1,0 +1,38 @@
+---
+title: '1. Bookkeeping'
+description: Bank transactions, receipts and the monthly close.
+---
+
+:::caution[DAKSH-WRITES]
+The steps in order, in your words: BRIEF.md section 5, prompts 1-4.
+:::
+
+## The constraint I would test first
+
+:::caution[DAKSH-WRITES]
+Facts and links are checked, the wording is not yours. Say this in your own words, then delete this box.
+:::
+
+Intuit support answers on its developer forum say no public API reads or accepts "For Review" bank feed transactions, and that a transaction created by API posts straight to the ledger without clearing the queue. That risks duplicates. I found no official document on this, so I would confirm it in a QuickBooks sandbox in week 1. ([Intuit developer forum](https://help.developer.intuit.com/s/question/0D5TR00001VhrZq0AJ/is-there-a-supported-api-scope-or-partner-program-to-read-or-accept-pending-bankfeed-for-review-transactions-in-qbo-if-not-are-bank-rules-with-autoadd-the-recommended-mechanism-for-automating-recurring-merchant-categorization-on-our-own-file), read 2026-11-05)
+
+## Checks
+
+:::caution[DAKSH-WRITES]
+Starter list from research. Cut, change or add rows: you have to defend each one in an interview. Then delete this box.
+:::
+
+| Check | If it fails |
+|---|---|
+| Receipt subtotal + tax = total | Goes to a person, not the books |
+| Tax amount fits the tax code on the line and a valid rate for where the purchase was made (Ontario client buying in Alberta pays GST, not HST) | Goes to a person |
+| Same vendor, date and amount already in the books | Held as a possible duplicate |
+| Receipt matches a bank line | Listed as unmatched |
+| Category confidence below the line | Question goes to the client or admin |
+| Book balance = statement ending balance | Month stays open |
+| Expense category swings far from recent months | Listed for sign-off |
+
+## What you still do by hand
+
+:::caution[DAKSH-WRITES]
+Prompt 5.
+:::

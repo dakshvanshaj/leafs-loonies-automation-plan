@@ -1,0 +1,43 @@
+---
+title: '2. Payroll'
+description: Hours in, checks, one approval, and the books tied back.
+---
+
+:::caution[DAKSH-WRITES]
+The steps in order, in your words: BRIEF.md section 5, prompts 6-9.
+:::
+
+## What is already solved
+
+:::caution[DAKSH-WRITES]
+Facts and links are checked, the wording is not yours. Say this in your own words, then delete this box.
+:::
+
+Wagepoint calculates the deductions and connects to QuickBooks Online, 7shifts and Deputy ([Wagepoint](https://wagepoint.com/integrations), read 2026-11-05). I would not rebuild that. Sources disagree on whether it has a public API, so I would ask Wagepoint before relying on one.
+
+## Checks before the approval reaches you
+
+:::caution[DAKSH-WRITES]
+Starter list from research. Cut, change or add rows: you have to defend each one in an interview. Then delete this box.
+:::
+
+| Check | If it fails |
+|---|---|
+| Hours fit the employee's schedule and recent pay runs | Run stops, reason shown |
+| Pay rate, new hire or departure changed since the last run | Listed for your eye |
+| Net pay swings far from recent runs | Listed for your eye |
+| Sample pay lines recalculated from CRA's [T4127 formulas](https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas.html) | Run stops, difference shown |
+| Anything changed after you approved | Approval cancelled, you see it again |
+| Posting journal in QuickBooks = pay run = bank withdrawal, allowing for Wagepoint's own fee, which does not export to QuickBooks (confirm in setup) | Flagged after the run |
+
+:::caution[DAKSH-WRITES]
+Facts and links are checked, the wording is not yours. Say this in your own words, then delete this box.
+:::
+
+Quebec is separate: CRA's payroll calculator excludes it ([CRA](https://www.canada.ca/en/revenue-agency/services/e-services/digital-services-businesses/payroll-deductions-online-calculator.html)). Any Quebec clients need their own check.
+
+## What you still do by hand
+
+:::caution[DAKSH-WRITES]
+Prompt 10.
+:::
